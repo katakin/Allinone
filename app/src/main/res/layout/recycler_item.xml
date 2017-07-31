@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import
+            alias="string"
+            type="String" />
+
+        <variable
+            name="currency"
+            type="com.example.allinone.model.CurrencyData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="5dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="5dp"
+            android:paddingStart="0dp"
+            android:text="@{currency.name}"
+            android:textStyle="bold"
+            tools:text="Bancor" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{string.valueOf(currency.percentChange24h) + '%'}"
+            android:textColor="@{currency.percentChange24h >= 0 ? @color/green : @color/red}"
+            android:textStyle="bold"
+            tools:text="+10%" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@{'$' + string.valueOf(currency.priceUsd)}"
+            android:textColor="@{currency.percentChange24h >= 0 ? @color/green : @color/red}"
+            android:textStyle="bold"
+            tools:text="$10" />
+    </LinearLayout>
+</layout>

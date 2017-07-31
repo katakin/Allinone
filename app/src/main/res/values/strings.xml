@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Allinone</string>
+
+    <string name="send_request">Send request</string>
+
+    <string name="network_error">Connection could not be made. Please check your network settings</string>
+    <string name="data_parse_error">The data couldn\'t be read</string>
+    <string name="network_timeout">Connection timeout</string>
+</resources>

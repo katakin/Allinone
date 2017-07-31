@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.example.allinone"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    final SUPPORT_VERSION = '26.0.0'
+    final RETROFIT_VERSION = '2.3.0'
+    final OKHTTP3_VERSION = '3.8.1'
+    final DAGGER_VERSION = '2.11'
+    final LIFECYCLE_VERSION = '1.0.0-alpha7'
+
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'jsr305'
+    })
+    testCompile 'junit:junit:4.12'
+    /* Support libraries */
+    compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_VERSION"
+    /* RxJava */
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    /* Retrofit 2 */
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+    /* OkHttp 3 */
+    compile "com.squareup.okhttp3:okhttp:$OKHTTP3_VERSION"
+    compile "com.squareup.okhttp3:logging-interceptor:$OKHTTP3_VERSION"
+    /* Gson */
+    compile 'com.google.code.gson:gson:2.8.1'
+    /* Dagger */
+    compile "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+    /* Lifecycles */
+    compile "android.arch.lifecycle:runtime:$LIFECYCLE_VERSION"
+    compile "android.arch.lifecycle:extensions:$LIFECYCLE_VERSION"
+    annotationProcessor "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
+}
